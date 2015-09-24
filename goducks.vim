@@ -3,16 +3,10 @@ let g:airline#themes#goducks#palette = {}
 " arrays are in the format:
 " [ guifg, guibg, ctermfg, ctermbg, opts ]. See "help attr-list" for valid
 " values for the "opt" value.
-let s:N1   = [ '#000000' , '#ffcc00' , 0  , 220 ]
-let s:N2   = [ '#ffffff' , '#004f27' , 255 , 22 ]
-let s:N3   = [ '#009c4d' , '#202020' , 40  , 234 ]
+let s:N1   = [ '#000000' , '#ffcc00' , 0  , 220 ]  "mode
+let s:N2   = [ '#ffffff' , '#004f27' , 255 , 22 ]  "info
+let s:N3   = [ '#009c4d' , '#202020' , 40  , 234 ] "statusline
 let g:airline#themes#goducks#palette.normal = airline#themes#generate_color_map(s:N1, s:N2, s:N3)
-
-" DONT KNOW WHAT THIS BIT DOES SO I COMMENTED IT OUT
-"let g:airline#themes#goducks#palette.normal_modified = {
-      "\ 'airline_c': [ '#ffffff' , '#5f005f' , 255     , 53      , ''     ] ,
-      "\ }
-
 
 let s:I1 = [ '#004f27' , '#ffffff' , 22  , 255 ]
 let s:I2 = [ '#ffffff' , '#005fff' , 255 , 25  ]
@@ -33,8 +27,6 @@ let g:airline#themes#goducks#palette.replace = copy(g:airline#themes#goducks#pal
 let g:airline#themes#goducks#palette.replace.airline_a = [ s:I2[0]   , '#af0000' , s:I2[2] , s:I2[2]   , ''     ]
 let g:airline#themes#goducks#palette.replace_modified = g:airline#themes#goducks#palette.insert_modified
 
-
-" Visual mode has been modified
 let s:V1 = [ '#ffffff' , '#004f27' , 255 , 22  ]
 let s:V2 = [ '#000000' , '#ffcc00' , 0  , 220 ]
 let s:V3 = [ '#ffffff' , '#004f27' , 255 , 22  ]
@@ -42,7 +34,6 @@ let g:airline#themes#goducks#palette.visual = airline#themes#generate_color_map(
 let g:airline#themes#goducks#palette.visual_modified = {
       \ 'airline_c': [ '#ffffff' , '#4f0028' , 255     , 53      , ''     ] ,
       \ }
-" End of custom modifications
 
 let s:IA1 = [ '#ffcc00' , '#1c1c1c' , 220 , 234 , '' ]
 let s:IA2 = [ '#ffcc00' , '#262626' , 220 , 235 , '' ]
@@ -51,7 +42,6 @@ let g:airline#themes#goducks#palette.inactive = airline#themes#generate_color_ma
 let g:airline#themes#goducks#palette.inactive_modified = {
       \ 'airline_c': [ '#875faf' , '' , 97 , '' , '' ] ,
       \ }
-
 
 " Accents are used to give parts within a section a slightly different look or
 " color. Here we are defining a "red" accent, which is used by the 'readonly'
@@ -73,8 +63,8 @@ if !get(g:, 'loaded_ctrlp', 0)
   finish
 endif
 let g:airline#themes#goducks#palette.ctrlp = airline#extensions#ctrlp#generate_color_map(
-      \ [ '#d7d7ff' , '#19603c' , 252 , 55  , ''     ],
-      \ [ '#ffffff' , '#327252' , 255 , 98  , ''     ],
+      \ [ '#d7d7ff' , '#19603c' , 252 , 70  , ''     ],
+      \ [ '#ffffff' , '#327252' , 255 , 72  , ''     ],
       \ [ '#000000' , '#ffcc00' , 0  , 220 , 'bold' ])
 
 
