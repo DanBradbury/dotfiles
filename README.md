@@ -1,5 +1,8 @@
 ## Copy-Pasta Vim setup (mvim + viMproved battle-tested)
 ```
+# vundle install
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
 # .vimrc + Install Plugins
 git clone https://github.com/DanBradbury/dotfiles && sudo mv dotfiles/vimrc ~/.vimrc && vim -c ":PluginInstall"
 
