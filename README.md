@@ -13,7 +13,6 @@ sudo mv dotfiles/goducks.vim ~/.vim/bundle/vim-airline/autoload/airline/themes/g
 vim plugins
 --------
 - [clever-f](https://github.com/rhysd/clever-f.vim) - Extends `f`, `F`, `t`, `T` for more convenience
-- [vim-hackernews](https://github.com/ryanss/vim-hackernews) - Opens Hacker News front page with `:HackerNews`
 - [vader](https://github.com/junegunn/vader.vim) - A simple Vimscript test framework
 - [scratch](https://github.com/mtth/scratch.vim) - Unobtrusive scratch window (`:Scratch`)
 - [colorizer](https://github.com/lilydjwg/colorizer) - Colorize all text in the form `#rrggbb` or `#rgb`
