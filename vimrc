@@ -7,7 +7,6 @@ call vundle#begin()
 "                                 Vim Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plugin 'rhysd/clever-f.vim'
-Plugin 'ryanss/vim-hackernews'
 Plugin 'junegunn/vader.vim'
 Plugin 'mtth/scratch.vim'
 Plugin 'lilydjwg/colorizer'
@@ -16,7 +15,6 @@ Plugin 'jceb/vim-orgmode'
 Plugin 'DanBradbury/vim-poi'
 Plugin 'DanBradbury/vim-fetch-jira'
 Plugin 'DanBradbury/vim-rubytest'
-Plugin 'mnpk/vim-jira-complete'
 Plugin 'tyru/open-browser.vim'
 Plugin 'tyru/open-browser-github.vim'
 Plugin 'scrooloose/nerdcommenter'
@@ -309,4 +307,3 @@ function! s:DiffWithSaved()
   exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
 endfunction
 com! DiffSaved call s:DiffWithSaved()
-

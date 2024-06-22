@@ -10,10 +10,16 @@ git clone https://github.com/DanBradbury/dotfiles && sudo mv dotfiles/vimrc ~/.v
 sudo mv dotfiles/goducks.vim ~/.vim/bundle/vim-airline/autoload/airline/themes/goducks.vim
 ```
 
-vim plugins
+## Neovim setup
+> Under construction while I figure out if `Lazyvim` is the way forward
+1. For latest install instructions go to https://www.lazyvim.org/
+2. Install the additional config + keymaps.lua into their respective folders (`~/.config/nvim/lua/config|plugins`)
+3. Have fun
+
+
+vim plugins in `vimrc` with links
 --------
 - [clever-f](https://github.com/rhysd/clever-f.vim) - Extends `f`, `F`, `t`, `T` for more convenience
-- [vim-hackernews](https://github.com/ryanss/vim-hackernews) - Opens Hacker News front page with `:HackerNews`
 - [vader](https://github.com/junegunn/vader.vim) - A simple Vimscript test framework
 - [scratch](https://github.com/mtth/scratch.vim) - Unobtrusive scratch window (`:Scratch`)
 - [colorizer](https://github.com/lilydjwg/colorizer) - Colorize all text in the form `#rrggbb` or `#rgb`
