@@ -6,71 +6,41 @@ call vundle#begin()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                 Vim Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'rhysd/clever-f.vim'
+Plugin 'DanBradbury/ale'
+Plugin 'ubaldot/vim9-conversion-aid'
+Plugin 'lacygoill/vim9-syntax'
+Plugin 'jessepav/vim-boxdraw'
 Plugin 'junegunn/vader.vim'
+Plugin 'VundleVim/Vundle.vim'
+"Plugin 'DanBradbury/colorful-windows.vim'
+Plugin 'DanBradbury/modes.vim'
+Plugin 'DanBradbury/github-actions.vim'
+Plugin 'DanBradbury/copilot-chat.vim'
+Plugin 'DanBradbury/vim-plan'
 Plugin 'mtth/scratch.vim'
-Plugin 'lilydjwg/colorizer'
-Plugin 'bling/vim-airline'
-Plugin 'jceb/vim-orgmode'
 Plugin 'DanBradbury/vim-poi'
-Plugin 'DanBradbury/vim-fetch-jira'
-Plugin 'DanBradbury/vim-rubytest'
 Plugin 'tyru/open-browser.vim'
 Plugin 'tyru/open-browser-github.vim'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'gmarik/vundle'
 Plugin 'lsdr/monokai'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'chrisbra/csv.vim'
 Plugin 'godlygeek/tabular'
-Plugin 'kchmck/vim-coffee-script'
 Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
-Plugin 'mattn/gist-vim'
-Plugin 'mattn/webapi-vim'
 Plugin 'mileszs/ack.vim'
-Plugin 'mmalecki/vim-node.js'
-Plugin 'othree/html5.vim'
-Plugin 'pangloss/vim-javascript'
 Plugin 'rking/ag.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
-Plugin 'slim-template/vim-slim'
 Plugin 'tomasr/molokai'
-Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-afterimage'
-Plugin 'tpope/vim-abolish'
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-eunuch'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-git'
-Plugin 'tpope/vim-haml'
-Plugin 'tpope/vim-markdown'
-Plugin 'tpope/vim-pastie'
-Plugin 'tpope/vim-ragtag'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-speeddating'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'tpope/vim-vividchalk'
-Plugin 'tpope/vim-surround'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'vim-scripts/apachelogs.vim'
-Plugin 'vim-scripts/apachestyle'
-Plugin 'vim-scripts/bats.vim'
-Plugin 'vim-scripts/dhcpd.vim'
-Plugin 'vim-scripts/fontzoom.vim'
-Plugin 'vim-scripts/iptables'
-Plugin 'vim-scripts/nginx.vim'
 Plugin 'jaxbot/semantic-highlight.vim'
-Plugin 'junegunn/goyo.vim'
-Plugin 'junegunn/limelight.vim'
-Plugin 'matthias-guenther/hammer.vim'
 Plugin 'airblade/vim-gitgutter'
-call vundle#end()
+Plugin 'vim-test/vim-test'
+Plugin 'tpope/vim-dispatch'
+Plugin 'iamcco/markdown-preview.nvim'
+Plugin 'kchmck/vim-coffee-script'
 
+call vundle#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                 Vim Configurations
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -93,7 +63,7 @@ set mousemodel=popup                                      " right-click pops up 
 set ruler                                                 " show cursor position in status bar
 " set relativenumber                                        " show relative line numbers
 set number                                                " show absolute line number of the current line
-set nofoldenable                                          " I fucking hate code folding
+"set nofoldenable                                          " I fucking hate code folding
 set scrolloff=10                                          " scroll the window so we can always see 10 lines around the cursor
 set textwidth=999                                         " show a vertical line at the 79th character
 set cursorline                                            " highlight the current line
@@ -104,14 +74,14 @@ set guioptions-=r                                         " turn off GUI right s
 set guioptions-=L                                         " turn off GUI left scrollbar
 set winaltkeys=no                                         " turn off stupid fucking alt shortcuts
 set laststatus=2                                          " always show status bar
+set guioptions+=m
+let &guifont="FiraCode Nerd Font"
 " check the parent directories for tags, too.
 set tags+=./tags,../tags,../../tags,../../../tags,../../../../tags
 set tags+=../../../../../tags,../../../../../../tags,../../../../../../../tags
 set tags+=../../../../../../../../tags,../../../../../../../../../tags
 au BufNewFile,BufReadPost *.md set filetype=markdown
 let g:markdown_fenced_languages = ['coffee', 'css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html']
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                 Vim Plugin Configurations
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -139,7 +109,7 @@ let g:jira_current_sprint = '80'
 let g:rubytest_cmd_test = "ruby %p"
 let g:rubytest_cmd_testcase = "ruby %p -n '/%c/'"
 " NERDTree
-let NERDTreeWinPos='right'
+let NERDTreeWinPos='left'
 let NERDTreeQuitOnOpen=1
 let g:UltiSnipsExpandTrigger="<c-u>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
@@ -148,14 +118,22 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
+let test#python#runner="pyunit"
+"let test#python#runner="nose2"
+"let test#python#runner="pytest"
+let test#strategy="dispatch"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                 Vim Apperance & Formatting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax on
+let g:solarized_termcolors=256
+
 if has("gui_running")
-  colorscheme atom-dark
+  colorscheme molokai
 else
-  colorscheme atom-dark
+  "colorscheme molokai
+  set background=dark
+  colorscheme solarized
   "colorscheme summerfruit256
 endif
 set t_Co=256 " 256 colors in terminal
@@ -190,25 +168,23 @@ map <S-Up> <C-w>+
 map <S-Right> <C-w>>
 map <Leader>b :normal o binding.pry<CR>
 "quickly preview items while in nerdtree
-map <Leader>m mq
+"map <Leader>m mq
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                 Vim Plugin Mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <Leader>v :Vader<CR>
 let g:gitgutter_max_signs=5000
-"https://github.com/neilagabriel/vim-geeknote
-noremap <Leader>e :Geeknote<CR>
-"https://github.com/sjl/gundo.vim
-nnoremap <F5> :GundoToggle<CR>
 " ruby testing mappings
 map <leader>rc "ayi"
-map <Leader>R :call SelectandRun()<CR>
-map <Leader>rl :call RerunLastTest()<CR>
+map <Leader>R :TestNearest<CR>
+map <Leader>r :TestLast<CR>
+"map <Leader>R :call SelectandRun()<CR>
+"map <Leader>rl :call RerunLastTest()<CR>
 "map <Leader>L <Plug>RubyTestRunLast
 map <Leader>Z :Dispatch ruby % -n /'<C-R>a'/<CR>
 "map <Leader>R :Dispatch ruby -I"lib:test" '%' -n /'<C-R>a'/<CR>
 " UNCOMMENT THE LINE BELOW TO MAKE RUBY TESTS RUN
-map <Leader>r :Dispatch ruby %<CR>
+"map <Leader>r :Dispatch ruby %<CR>
 "map <Leader>r :Dispatch rspec %<CR>
 
 
@@ -223,7 +199,7 @@ map <Leader>- yypVr-
 map <Leader>s :sort<CR>
 map <Leader>ji :!ruby "/Users/danielbradbury/Documents/Invoca/open_jira.rb"<CR>
 map <Leader>ag :Ag
-map <Leader>a :normal "+yaw<CR>
+"map <Leader>a :normal "+yaw<CR>
 map <Leader>ms :mksession!<CR>:xa<CR>
 map <Leader>af :Ag<MiddleMouse><CR>
 "TRYING TO FIGURE OUT WHICH ONE I LIKE MORE :D
@@ -246,7 +222,7 @@ map <Leader>] gt
 map <Leader>{ :execute "tabmove" tabpagenr() - 2 <CR>
 map <Leader>} :execute "tabmove" tabpagenr() <CR>
 map <Leader>gb :Gblame<CR>
-map <Leader>md :%! /Users/danielbradbury/bin/Markdown.pl --html4tags<CR>
+"map <Leader>md :%! /Users/danielbradbury/bin/Markdown.pl --html4tags<CR>
 map <Leader>q :q<CR>
 map <Leader>w :w<CR>
 map <Leader>m0 :tabm0<CR>
@@ -281,23 +257,9 @@ noremap <C-l> 10l
 noremap <C-h> 10h
 
 map <C-Bslash> :NERDTreeToggle<CR>
+map <C-n> :NERDTreeFind<CR>
 
 nmap <Leader>f :Ack<Space>
-
-function! SelectandRun()
-  execute "normal /\"/e+2\<CR>"
-  normal "ayi"
-  normal \Z
-  normal 0
-  normal ml
-  let g:last_run_test = line(".")
-endfunction
-
-function! RerunLastTest()
-  execute ":norm ".g:last_run_test."G"
-  normal 0
-  call SelectandRun()
-endfunction
 
 function! s:DiffWithSaved()
   let filetype=&ft
@@ -307,3 +269,14 @@ function! s:DiffWithSaved()
   exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
 endfunction
 com! DiffSaved call s:DiffWithSaved()
+
+
+noremap <C-D-i> :CopilotChatOpen<CR>
+"noremap <C-D-m> :CopilotModels<CR>
+
+let g:copilot_chat_debug = 1
+let g:github_actions_window_size = 60
+
+let g:ale_linters = {'vim': ['vinter']}
+let g:prefetch_actions = 1
+vmap <leader>a <Plug>CopilotChatAddSelection
